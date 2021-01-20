@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %} - Amish Campground</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  </head>
+  <body>
+    <section class="hero is-medium is-primary has-bg-img">
+        <div class="hero-head">
+          <nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item is-size-5 has-text-weight-bold has-font-bold " href="/">
+                Amish Campground
+              </a>
+          
+              <a role="button" class="navbar-burger has-text-white" aria-label="menu" aria-expanded="false" data-target="main_nav">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+          
+            <div id="main_nav" class="navbar-menu">
+          
+              <div class="navbar-end">
+                <a class="navbar-item">
+                  Rates & Reservations
+                </a>
+          
+                <a class="navbar-item">
+                  Amenities
+                </a>
+                <a class="navbar-item">
+                  About
+                </a>
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-primary is-rounded">
+                      <strong>Reserve Online</strong>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div class="hero-body">
+          <div class="container">
+            <div class="columns">
+              <div class="column is-8-desktop is-offset-2-desktop">
+                <h1 class="title is-1 is-spaced fadeIn">
+                    {% block hero_title %}Welcome to Amish Campground{% endblock %}
+                </h1>
+                <h2 class="subtitle is-5 fadeIn">
+                    {% block hero_subtitle %}Amish Campground is the perfect place to relax and enjoy nature just outside of Canton, MN.{% endblock %}
+                </h2>
+                {% block cta %}
+                <a href="#" class="button is-rounded is-primary fadeIn">
+                    Reserve Online
+                </a>
+                {% endblock %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {% block body %}
+      {% endblock %}
+
+      <footer class="footer has-background-dark has-text-centered">
+        <div class="content">
+              <p class="has-text-white">
+               Copyright 2021 Amish Campground
+              </p>
+              <p class="has-text-white">
+                38109 134th St.- Canton, MN.
+              </p>
+            </div>
+      </footer>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
