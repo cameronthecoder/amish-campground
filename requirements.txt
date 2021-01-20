@@ -1,6 +1,7 @@
 aiofiles==0.6.0
 aiomysql==0.0.21
 aiosqlite==0.16.0
+asyncpg==0.21.0
 attrs==20.3.0
 blinker==1.4
 click==7.1.2
