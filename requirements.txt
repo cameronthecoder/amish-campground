@@ -9,6 +9,7 @@ gunicorn==20.0.4
 h11==0.11.0
 h2==4.0.0
 hpack==4.0.0
+httptools==0.1.1
 Hypercorn==0.11.1
 hyperframe==6.0.0
 iniconfig==1.1.1
@@ -23,12 +24,16 @@ PyMySQL==0.9.3
 pyparsing==2.4.7
 pytest==6.2.1
 pytest-asyncio==0.14.0
+python-dotenv==0.15.0
+PyYAML==5.4
 Quart==0.14.1
 Quart-CORS==0.3.0
 SQLAlchemy==1.3.22
 toml==0.10.2
 typing-extensions==3.7.4.3
 uvicorn==0.13.3
-uvloop
+uvloop==0.14.0
+watchgod==0.6
+websockets==8.1
 Werkzeug==1.0.1
 wsproto==1.0.0
