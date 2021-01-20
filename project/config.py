@@ -10,7 +10,7 @@ class Config(object):
     POSTGRES_PORT = os.environ.get("POSTGRES_PORT", 5432)
     POSTGRES_HOST = os.environ.get("POSTGRES_HOST", "localhost")
     POSTGRES_DATABASE_NAME = os.environ.get('POSTGRES_DATABASE_NAME')
-
+    SSL_ENABLED = False
 
 
     @property
@@ -28,7 +28,7 @@ class Config(object):
             return os.environ['DATABASE_URL']
 
 class ProductionConfig(Config):
-    pass
+    SSL_ENABLED = True
 
 class DevelopmentConfig(Config):
     DEBUG = True
