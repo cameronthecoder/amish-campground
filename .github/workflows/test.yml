@@ -40,7 +40,7 @@ jobs:
       env: 
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         POSTGRES_PASSWORD: 'secret'
-        POSTGRES_USER: 'secret'
+        POSTGRES_USER: 'root'
         POSTGRES_DATABASE_NAME: 'test_db'
       run: |
         python -m pytest -v
