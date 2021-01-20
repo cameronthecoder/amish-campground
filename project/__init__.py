@@ -22,7 +22,7 @@ def create_app(testing=False):
     app.config.from_object(cfg)
 
 
-    database = Database(app.config['DATABASE_URI'])
+    database = Database(app.config['DATABASE_URI'], ssl=True)
 
     @app.before_serving
     async def create_db_pool():
