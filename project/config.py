@@ -24,7 +24,7 @@ class Config(object):
                 self.POSTGRES_DATABASE_NAME
             )
         else:
-            return os.environ['DATABASE_URL']
+            return os.environ['DATABASE_URL'] + "?sslmode=require"
 
 
 class ProductionConfig(Config):
