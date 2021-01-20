@@ -25,8 +25,7 @@ class Config(object):
             )
         else:
             print(os.environ['DATABASE_URL'] + "?sslmode=require")
-            return os.environ['DATABASE_URL'] + "?ssl=true"
-
+            return os.environ['DATABASE_URL']
 
 class ProductionConfig(Config):
     pass
