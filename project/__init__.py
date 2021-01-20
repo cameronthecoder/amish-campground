@@ -26,6 +26,23 @@ def create_app(testing=False):
     async def create_db_pool():
         await database.connect()
         app.db = database
+        await app.db.execute("""
+        CREATE TABLE IF NOT EXISTS "site" 
+            ("id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+            "name"	CHAR(30) NOT NULL
+            )
+        """)
+        await app.db.execute("""
+        CREATE TABLE IF NOT EXISTS "reservation" (
+            "id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+            "first_name"	CHAR(60) NOT NULL,
+            "last_name"	CHAR(60) NOT NULL,
+            "start_date"	DATE NOT NULL,
+            "end_date"	DATE NOT NULL,
+            "site_id"	INTEGER,
+            FOREIGN KEY("site_id") REFERENCES "site"("id")
+        )
+        """)
         # GET db table information from SHOW CREATE TABLE
 
     @app.after_serving
