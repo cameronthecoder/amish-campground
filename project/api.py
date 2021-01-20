@@ -39,19 +39,19 @@ async def get_available_sites():
             'status': 400
         }, 400
 
-    sql = f"""
-    SELECT id,name from site WHERE id NOT IN (
+    sql = """
+    SELECT id, name from site WHERE id NOT IN (
         SELECT site_id FROM reservation
             INNER JOIN site ON site.id = reservation.site_id
 
-            WHERE (start_date <= "{arrival_date}" AND end_date >= "{arrival_date}")
-                OR (start_date < "{departure_date}" AND end_date >= "{departure_date}" )
-                OR ("{arrival_date}" <= start_date AND "{departure_date}" >= start_date)
-    )
+            WHERE (start_date <= :arrival_date AND end_date >= :arrival_date)
+                OR (start_date < :departure_date AND end_date >= :departure_date)
+                OR (:arrival_date <= start_date AND :departure_date >= start_date)
+    );
     """
 
 
-    q = await current_app.db.fetch_all(sql)
+    q = await current_app.db.fetch_all(sql, values={'arrival_date': start, 'departure_date': end})
 
     sites = []
 

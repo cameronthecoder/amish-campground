@@ -7,6 +7,25 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres:12
+        # Provide the password for postgres
+        env:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: secret
+          POSTGRES_DB: test_db
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.8
@@ -20,5 +39,8 @@ jobs:
     - name: Test with pytest
       env: 
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        POSTGRES_PASSWORD: 'secret'
+        POSTGRES_DATABASE_NAME: 'test_db'
+        POSTGRES_PORT: 5432
       run: |
         python -m pytest -v

@@ -1,6 +1,7 @@
 from quart import Blueprint, render_template
 
 view = Blueprint('view', __name__)
+from project.config import Config
 
 @view.route('/')
 async def index():

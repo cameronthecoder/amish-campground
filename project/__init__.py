@@ -1,4 +1,5 @@
 from quart import Quart
+from werkzeug.utils import import_string
 from quart_cors import cors
 from databases import Database
 from project import config
@@ -11,13 +12,15 @@ def create_app(testing=False):
     quart_env = os.getenv("QUART_ENV", None)
 
     if testing:
-        app.config.from_object(config.TestingConfig)
+        cfg = import_string('project.config.TestingConfig')()
     elif quart_env == "development":
-        app.config.from_object(config.DevelopmentConfig)
+        cfg = import_string('project.config.DevelopmentConfig')()
     elif quart_env == "testing":
-        app.config.from_object(config.TestingConfig)
+        cfg = import_string('project.config.TestingConfig')()
     else:
-        app.config.from_object(config.ProductionConfig)
+        cfg = import_string('project.config.ProductionConfig')()
+    app.config.from_object(cfg)
+
 
     database = Database(app.config['DATABASE_URI'])
 
@@ -27,19 +30,19 @@ def create_app(testing=False):
         app.db = database
         await app.db.execute("""
         CREATE TABLE IF NOT EXISTS "site" 
-            ("id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-            "name"	CHAR(30) NOT NULL
+            (id SERIAL NOT NULL PRIMARY KEY,
+            name CHAR(30) NOT NULL
             )
         """)
         await app.db.execute("""
         CREATE TABLE IF NOT EXISTS "reservation" (
-            "id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-            "first_name"	CHAR(60) NOT NULL,
-            "last_name"	CHAR(60) NOT NULL,
-            "start_date"	DATE NOT NULL,
-            "end_date"	DATE NOT NULL,
-            "site_id"	INTEGER,
-            FOREIGN KEY("site_id") REFERENCES "site"("id")
+            id SERIAL NOT NULL PRIMARY KEY,
+            first_name CHAR(60) NOT NULL,
+            last_name CHAR(60) NOT NULL,
+            start_date DATE NOT NULL,
+            end_date DATE NOT NULL,
+            site_id	INTEGER,
+            FOREIGN KEY(site_id) REFERENCES site(id)
         )
         """)
         # GET db table information from SHOW CREATE TABLE
