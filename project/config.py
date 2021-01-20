@@ -1,8 +1,10 @@
 # Refer to https://flask.palletsprojects.com/en/1.1.x/config/ for more information.
+import os
 
 class Config(object):
     DEBUG = False
     TESTING = False
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     DATABASE_URI = 'sqlite:///db.db'
 
 class ProductionConfig(Config):
@@ -14,4 +16,5 @@ class DevelopmentConfig(Config):
 
 class TestingConfig(Config):
     TESTING = True
+    WTF_CSRF_ENABLED = False
     DEBUG = True
