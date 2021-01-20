@@ -6,7 +6,7 @@ class Config(object):
     TESTING = False
     SECRET_KEY = os.environ['SECRET_KEY']
     POSTGRES_PASSWORD = os.environ['POSTGRES_PASSWORD']
-    POSTGRES_USERNAME = os.environ['POSTGRES_USERNAME']
+    POSTGRES_USER = os.environ['POSTGRES_USER']
     POSTGRES_PORT = os.environ.get('POSTGRES_PORT', 5432)
     POSTGRES_HOST = os.environ.get("POSTGRES_HOST", "localhost")
     POSTGRES_DATABASE_NAME = os.environ['POSTGRES_DATABASE_NAME']
@@ -15,7 +15,7 @@ class Config(object):
     @property
     def DATABASE_URI(self):
         return 'postgresql://%s:%s@%s:%s/%s' % (
-            self.POSTGRES_USERNAME, 
+            self.POSTGRES_USER, 
             self.POSTGRES_PASSWORD, 
             self.POSTGRES_HOST,
             str(self.POSTGRES_PORT), 
