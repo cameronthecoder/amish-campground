@@ -4,7 +4,7 @@ import os
 class Config(object):
     DEBUG = False
     TESTING = False
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SECRET_KEY = os.environ['SECRET_KEY']
     DATABASE_URI = 'sqlite:///db.db'
 
 class ProductionConfig(Config):

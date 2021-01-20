@@ -21,7 +21,6 @@ def create_app(testing=False):
 
     database = Database(app.config['DATABASE_URI'])
 
-
     @app.before_serving
     async def create_db_pool():
         await database.connect()
