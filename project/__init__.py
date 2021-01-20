@@ -36,6 +36,7 @@ def create_app(testing=False):
     from project.api import api
     from project.admin import admin
 
+    # Blueprints
     app.register_blueprint(view)
     app.register_blueprint(api)
     app.register_blueprint(admin)
