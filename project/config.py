@@ -5,11 +5,11 @@ class Config(object):
     DEBUG = False
     TESTING = False
     SECRET_KEY = os.environ["SECRET_KEY"]
-    POSTGRES_PASSWORD = os.environ["POSTGRES_PASSWORD"]
-    POSTGRES_USER = os.environ["POSTGRES_USER"]
+    POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
+    POSTGRES_USER = os.environ.get("POSTGRES_USER")
     POSTGRES_PORT = os.environ.get("POSTGRES_PORT", 5432)
     POSTGRES_HOST = os.environ.get("POSTGRES_HOST", "localhost")
-    POSTGRES_DATABASE_NAME = os.environ['POSTGRES_DATABASE_NAME']
+    POSTGRES_DATABASE_NAME = os.environ.get('POSTGRES_DATABASE_NAME')
 
 
 
