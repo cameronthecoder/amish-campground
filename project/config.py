@@ -25,7 +25,7 @@ class Config(object):
             )
         else:
             print(os.environ['DATABASE_URL'] + "?sslmode=require")
-            return os.environ['DATABASE_URL'] + "?min_size=1&max_size=3"
+            return os.environ['DATABASE_URL'] + "?min_size=1&max_size=2"
 
 class ProductionConfig(Config):
     SSL_ENABLED = True
