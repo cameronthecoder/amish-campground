@@ -14,7 +14,7 @@ class Config(object):
 
     @property
     def DATABASE_URI(self):
-        return 'postgresql://%s:%s@%s:%s/%s' + "?min_size=1&max_size=4" % (
+        return 'postgresql://%s:%s@%s:%s/%s?min_size=1&max_size=4' % (
             self.POSTGRES_USER, 
             self.POSTGRES_PASSWORD, 
             self.POSTGRES_HOST,
