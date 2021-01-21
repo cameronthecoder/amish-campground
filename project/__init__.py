@@ -48,7 +48,6 @@ def create_app(testing=False):
                 FOREIGN KEY(site_id) REFERENCES site(id)
             )
             """)
-            # GET db table information from SHOW CREATE TABLE
 
     @app.after_serving
     async def disconnect_db():
