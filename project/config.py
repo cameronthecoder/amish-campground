@@ -29,6 +29,7 @@ class Config(object):
 
 class ProductionConfig(Config):
     SSL_ENABLED = True
+    DEBUG = True
 
 class DevelopmentConfig(Config):
     DEBUG = True
