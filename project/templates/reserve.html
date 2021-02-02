@@ -1,0 +1,247 @@
+{% extends 'base.html' %} 
+{% block title %}Make a Reservation{% endblock %} 
+{% block hero_title %}Make a Reservation{% endblock %} 
+{% block cta %}{% endblock %} 
+{% set hero_text_centered = True %} 
+{% set hero_size = 'small' %} 
+{% block body %}
+<!--<link rel="stylesheet" href="{{ url_for('static', filename='bulma-calendar.min.css') }}">-->
+<section class="section">
+  <div class="container">
+    <ul class="steps">
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">Step 1</p>
+          <p>Choose a site</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">Step 2</p>
+          <p>Enter your information</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">Step 3</p>
+          <p>Confirm & Pay</p>
+        </div>
+      </li>
+    </ul>
+
+    <div id="step-1" data-stepid="1" style="margin-top: 40px">
+      <div class="field">
+        <div class="control">
+          <label class="label">Arrival & Departure</label>
+          <input class="input" type="date" />
+        </div>
+      </div>
+
+      <h1 class="title" id="available-sites-header" style="margin-top: 100px">
+        Available Sites
+      </h1>
+
+      <div class="has-background-light has-text-centered" id="available-sites">
+        <p class="py-6">
+          Select an arrival and departure date to see availability.
+        </p>
+        <img
+          src="{{ url_for('static', filename='images/30.svg') }}"
+          alt=""
+          id="loader"
+          style="margin-left: auto; margin-right: auto"
+        />
+        <div class="columns"></div>
+      </div>
+    </div>
+
+    <div id="step-2">
+      <div class="content">
+        <p class="has-text-danger">Fields marked with * are required.</p>
+      </div>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">First Name * / Last Name *</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control is-expanded">
+              <input
+                class="input"
+                type="text"
+                placeholder="First Name"
+                id="first_name"
+                autocomplete="given-name"
+              />
+            </p>
+          </div>
+          <div class="field">
+            <p class="control is-expanded">
+              <input
+                class="input is-success"
+                type="text"
+                placeholder="Last name"
+                id="last_name"
+                autocomplete="family-name"
+              />
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <label for="email" class="label">Email *</label>
+        </div>
+        <div class="field-body">
+          <div class="field is-expanded">
+            <p class="control is-expanded">
+              <input
+                class="input"
+                type="email"
+                autocomplete="email"
+                id="email"
+                placeholder="email@example.com"
+              />
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <label class="label">Phone Number *</label>
+        </div>
+        <div class="field-body">
+          <div class="field is-narrow">
+            <div class="control">
+              <input
+                class="input"
+                maxlength="15"
+                type="tel"
+                id="phone_number"
+                autocomplete="tel-national"
+                placeholder="5555555555"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="step-3">
+      <div class="content">
+        <h1>Is this information correct?</h1>
+        <p class="block">
+          If these details are correct, click on Confirm & Pay. Your reservation details and directions to Amish Campground will be sent to your email address. If you have any questions, please call us at (555) 555-5555.
+        </p>
+        <h2>Reservation Information</h2>
+        <p>Your arrival date is June 1st, 2021 and your departure date is June 2nd, 2021. Please make sure you leave by 11AM on your departure date to ensure a smooth experience for our next camper.</p>
+        <h2>Contact Information</h2>
+        <p>This information is used in case we need to contact you about your reservation.</p>
+        <div id="info">
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-grouped is-grouped-right" style="margin-top: 20px">
+      <p class="control">
+        <button class="button is-light is-large" id="previous"> Previous </button>
+      </p>
+
+      <p class="control">
+        <button class="button is-link is-large" id="next"> Next </button>
+      </p>
+      <p class="control">
+        <button class="button is-link is-large" id="pay"> Confirm & Pay </button>
+      </p>
+    </div>
+  </div>
+</section>
+<style>
+  #loader {
+    display: none;
+  }
+  #available-sites {
+    margin-top: 20px;
+    padding: 10px;
+  }
+  #step-2 {
+    display: none;
+    animation: fadeIn ease 0.5s;
+  }
+  #step-3 {
+    display: none;
+    animation: fadeIn ease 0.5s;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-moz-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-o-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-ms-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  #previous {
+    display: none;
+  }
+  #pay {
+    display: none;
+  }
+  #available-sites .columns {
+    display: none;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  .datetimepicker-dummy .datetimepicker-dummy-wrapper input {
+    word-spacing: normal;
+  }
+</style>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    var stripe_key = '{{STRIPE_TEST_KEY}}';
+</script>
+<script src="{{ url_for('static', filename='js/bulma-calendar.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/reserve.js') }}"></script>
+{% endblock %}

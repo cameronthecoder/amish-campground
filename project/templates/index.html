@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock %}
-
+{% block hero_subtitle %}Amish Campground is the perfect place to relax and enjoy nature just outside of Canton, MN.{% endblock %}
 {% block body %}
+{{ super() }}
+{% set hero_size = 'medium' %}
 <section class="section">
     <div class="container">
       <div class="notification is-primary has-text-centered">We are following all executive orders related to COVID-19 and your safety is our number one priority. Read more <a href="#">here</a>.</div>

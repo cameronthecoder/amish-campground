@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html class="has-background-light">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %} - Amish Campground Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.min.css') }}">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  </head>
+  <body>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io">
+            <strong>Amish Campground Admin</strong>
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item is-active">
+              Home
+            </a>
+      
+            <a class="navbar-item">
+                Sites
+            </a>
+
+            <a class="navbar-item">
+                Reservations
+            </a>
+            
+            <a class="navbar-item">
+              Users
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                More
+              </a>
+      
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                  Site Settings
+                </a>
+                <a class="navbar-item">
+                  Jobs
+                </a>
+                <a class="navbar-item">
+                  Contact
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">
+                  Report an issue
+                </a>
+              </div>
+            </div>
+          </div>
+      
+          <div class="navbar-end">
+            <div class="navbar-item">
+                <input type="text" class="input" placeholder="Search">
+            </div>
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-light">
+                  Log out
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+
+      <section class="section">
+          <div class="container">
+          <h1 class="title">Home</h1>
+          <h2 class="subtitle">Statistics for this month</h2>
+
+          <div class="tile is-ancestor has-text-centered">
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">4</p>
+                <p class="subtitle">Users</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">27</p>
+                <p class="subtitle">Reservations</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">3</p>
+                <p class="subtitle">Cancelled Reservations</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">3</p>
+                <p class="subtitle">Sites</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+          <div class="container">
+              <h2 class="subtitle">Recent Reservations</h2>
+              <table class="table is-striped is-fullwidth is-hoverable">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Paid</th>
+                    <th>Arrival Date</th>
+                    <th>Departure Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th><a href="#">5</a></th>
+                    <th>John</th>
+                    <th>Doe</th>
+                    <th><span class="tag is-success">Paid</span></th>
+                    <th>Jun 6th, 2021</th>
+                    <th>Jun 9th, 2021</th>
+                  </tr>
+                  <tr>
+                    <th><a href="#">4</a></th>
+                    <th>Sam</th>
+                    <th>Johnson</th>
+                    <th><span class="tag is-success">Paid</span></th>
+                    <th>Jun 10th, 2021</th>
+                    <th>Jun 11th, 2021</th>
+                  </tr>
+                  <tr>
+                    <th><a href="#">3</a></th>
+                    <th>Emily</th>
+                    <th>Johnson</th>
+                    <th><span class="tag is-success">Paid</span></th>
+                    <th>Jun 27th, 2021</th>
+                    <th>Jun 6th, 2021</th>
+                  </tr>
+                  <tr>
+                    <th><a href="#">2</a></th>
+                    <th>Jane</th>
+                    <th>Doe</th>
+                    <th><span class="tag is-success">Paid</span></th>
+                    <th>Jun 6th, 2021</th>
+                    <th>Jun 9th, 2021</th>
+                  </tr>
+                  <tr>
+                    <th><a href="#">1</a></th>
+                    <th>Riley</th>
+                    <th>Simmons</th>
+                    <th><span class="tag is-danger">Unpaid</span></th>
+                    <th>Jun 246th, 2021</th>
+                    <th>Jun 9th, 2021</th>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+      </section>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>

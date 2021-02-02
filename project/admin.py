@@ -1,7 +1,7 @@
-from quart import Blueprint
+from quart import Blueprint, render_template
 
-admin = Blueprint('admin', __name__, template_folder='admin', url_prefix='/admin/')
+admin = Blueprint('admin', __name__, url_prefix='/admin/')
 
 @admin.route('/')
 async def index():
-    return 'admin index'
+    return await render_template('admin/base.html')

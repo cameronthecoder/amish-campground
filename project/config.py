@@ -1,5 +1,7 @@
 # Refer to https://flask.palletsprojects.com/en/1.1.x/config/ for more information.
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 class Config(object):
     DEBUG = False
@@ -10,6 +12,12 @@ class Config(object):
     POSTGRES_PORT = os.environ.get("POSTGRES_PORT", 5432)
     POSTGRES_HOST = os.environ.get("POSTGRES_HOST", "localhost")
     POSTGRES_DATABASE_NAME = os.environ.get('POSTGRES_DATABASE_NAME')
+    STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+    STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+    MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.gmail.com')
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD =os.environ.get('MAIL_PASSWORD')
+    MAIL_PORT = os.environ.get('MAIL_PORT', 'smtp.gmail.com')
 
 
     @property
